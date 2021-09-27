@@ -3,7 +3,7 @@
       <div  v-for="(film, index) in lista_titoli_ridotta_main" :key="index">
           <Locandina :lista_titoli_locandina="film" />
       </div>
-      <div  v-for="(serie, i) in lista_titoli_ridotta_serie" :key="i">
+      <div  v-for="(serie, i) in lista_titoli_ridotta_serie" :key="'a'+i">
           <Locandina_serie :lista_titoli_locandina_serie="serie" />
       </div>
      

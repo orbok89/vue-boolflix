@@ -1,9 +1,10 @@
 <template>
   <div>
+    <img :src="`https://image.tmdb.org/t/p/w200${lista_titoli_locandina.poster_path}`"  alt="">
      <div>{{ lista_titoli_locandina.title}}</div>
      <div>{{lista_titoli_locandina.original_title}}</div>
     <country-flag :country='get_flag(lista_titoli_locandina.original_language)' size='small'/>
-    <div> {{lista_titoli_locandina.vote_average}}</div>
+    <div> {{star(lista_titoli_locandina.vote_average)}}</div>
   </div>
 </template>
 
@@ -21,6 +22,11 @@ export default {
       get_flag(lingua){
         if(lingua == "en")return "gb"
         return lingua
+      },
+      star(numero){
+        let stelle= Math.ceil((numero/2));
+        return stelle
+
       }
     }
 }
