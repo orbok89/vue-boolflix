@@ -1,11 +1,21 @@
 <template>
-  <div class="colore" @click="prova()">
-      <div  v-for="(film, index) in lista_titoli_ridotta_main" :key="index">
+  <div class="container">
+      <div>
+          film
+      </div>
+     <div class="flex">
+          <div  v-for="(film, index) in lista_titoli_ridotta_main" :key="index">
           <Locandina :lista_titoli_locandina="film" />
       </div>
-      <div  v-for="(serie, i) in lista_titoli_ridotta_serie" :key="'a'+i">
+      <div>
+           serie tv
+      </div>
+     </div>
+     <div class="flex">
+          <div  v-for="(serie, i) in lista_titoli_ridotta_serie" :key="'a'+i">
           <Locandina_serie :lista_titoli_locandina_serie="serie" />
       </div>
+     </div>
      
   </div>
 </template>
@@ -29,10 +39,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    .colore{
-        background-color: royalblue;
-        width: 100%;
-        height: 200px;
-    }
+   .flex{
+       display: flex;
+       flex-wrap: wrap;
+   }
+   .container{
+       width: 100%;
+       background-color:gray ;
+   }
    
 </style>

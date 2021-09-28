@@ -1,18 +1,23 @@
 <template>
-  <div>
-    <img :src="`https://image.tmdb.org/t/p/w200${lista_titoli_locandina_serie.poster_path}`"  alt="">
-     <div>{{ lista_titoli_locandina_serie.name}}</div>
-     <div>{{lista_titoli_locandina_serie.original_name}}</div>
-     <country-flag :country='get_flag(lista_titoli_locandina_serie.original_language)' size='small'/>
-     <div> {{star(lista_titoli_locandina_serie.vote_average)}}</div>
-     <div v-for="(prova, index) in star(lista_titoli_locandina_serie.vote_average)" :key="index"> <font-awesome-icon icon="star" /> 1</div>
-     <div>prova prova</div>
+  <div class="container1">
+    <img class="prova " :src="`https://image.tmdb.org/t/p/w200${lista_titoli_locandina_serie.poster_path}`"  alt="">
+    <div>Titolo: {{ lista_titoli_locandina_serie.name}}</div>
+    <div>Titolo originale:{{lista_titoli_locandina_serie.original_name}}</div>
+     <country-flag :country='get_flag(lista_titoli_locandina_serie.original_language)' size='small'/> 
+   <div>voto:
+        <span v-for="(prova, index) in star(lista_titoli_locandina_serie.vote_average)" :key="index">
+         <font-awesome-icon  class="giallo" icon="star" />
+    </span>
+    <span v-for="(prova, index) in (5-star(lista_titoli_locandina_serie.vote_average))" :key="index">
+         <font-awesome-icon   icon="star" />
+    </span>
+   </div>
   </div>
 </template>
 
 <script>
  
-
+ 
 import CountryFlag from 'vue-country-flag'
 export default {
     name:'Locandina_serie',
@@ -34,6 +39,23 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped lang="scss">
+    .container1{
+        position: relative;
+        width: 200px;
+        height: 300px;
+        margin: 10px;
+    }
+    .giallo{
+        color: yellow;
+         
+    }
+    .prova{
+        position:absolute;
+        z-index: 99;
+    }
+    .prova:hover{
+        display: none;
+    } 
+    
 </style>
